@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="underscore.js"></script>
+</head>
+<body>
+	
+	<div>
+		hello world!
+	</div>
+
+</body>
+
+<script>
+	var fruits = ['banana', 'apple', 'strawberry', 'blackberry', 'mango'];
+
+	var minLength = 5, fruitFive = [];
+
+	fruitFive = _.select(fruits, function(fruit) { return fruit.length > minLength;});
+
+	console.log(fruitFive);
+
+	_.each(fruits, function(fruit) {
+		console.log(fruit);
+	});
+
+</script>
+
+</html>
