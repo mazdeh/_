@@ -1,4 +1,7 @@
 # _
+
+Clone this repo, and open `index.html` locally. Have your Dev Tools open to see the JavaScript results.
+
 # An Introduction to Underscore.JS
 
 If you're a JavaScript developer and have experience with Ruby or Python, or languages alike, you crave some sort of a utility library for your front end JS code -- well that's precisely what Underscore will do for you.
