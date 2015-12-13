@@ -78,5 +78,73 @@ _.each(fruits, function(fruit) {
 JS does not have a good collection of built in array functions. Here are a few Underscore functions specifically for arrays.
 
 ### uniq
+Wouldn't be amazing if JS provided a function that would get rid of all the duplicates in an array? Well, check this out:
+```js
+var nums = [1, 1, 2, 3, 4, 5, 5, 5, 4, 7, 10, 10, 10];
+var unique = _.uniq(nums);
+
+console.log(unique); // [1, 2, 3, 4, 5, 7, 10]
+```
+
+This is probably my favorite. And the great thing about `uniq` is that it keeps the original order of the array!
+
+### range
+The `range` function is very similar to that of Python - if you're familiar with that. Here's the structure:
+```js
+_.range = function(start, stop, step);
+```
+
+Pretty straightforward -- `start` is your starting number in the range. `stop` is the max number you want to go to, and `step` is how far apart you want each of the numbers in your range.
+
+Here's a simple example:
+```js
+var fiver = _.range(10, 30, 5);
+console.log(fiver); // [10, 15, 20, 25]
+```
+
+Keep in mind that the `start` and `stop` numbers are included in the range.
+
+### rest
+Also very handy -- return sthe rest of the elements in an array. Pass in an index to rest, and it will return the elements in the array from that index onward.
+
+Here's an example:
+```js
+var array = [1, 2, 3, 4, 5, 6, 7, 8];
+
+var restArray = _.rest(array, 3);
+console.log(restArray); // [4, 5, 6, 7, 8]
+```
+
+### without
+Pass in what you want removed from the array, and it returns a copy of the array with all those values removed.
+
+```js
+var without = _.without(array, 1, 5, 8);
+console.log(without); // [2, 3, 4, 6, 7]
+```
+
+# Objects
+
+### keys
+Trying to iterate through an object and get all of the keys?
+```js
+var obj = {firstName: 'Vahid', lastName: 'Mazdeh', age: 23};
+
+var keys = _.keys(obj);
+console.log('_.keys example:', keys); // ["firstName", "lastName", "age"]
+```
+
+`keys` returns an array of the enumerable keys in the object.
+
+You can get the values in an object in the same manner, but using `_.values(object)` instead.
+
+### 
+
+
+
+
+
+
+
 
 

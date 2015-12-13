@@ -5,24 +5,57 @@
 </head>
 <body>
 	
-	<div>
-		hello world!
-	</div>
+	<h1>
+		Underscore Tutorial
+	</h1>
+	<p>
+	To open up Chrome Dev tools to checkout the example results: <strong>cmd + opt + J</strong>
+	</p>
 
 </body>
 
 <script>
+	
+	// select
 	var fruits = ['banana', 'apple', 'strawberry', 'blackberry', 'mango'];
 
 	var minLength = 5, fruitFive = [];
 
 	fruitFive = _.select(fruits, function(fruit) { return fruit.length > minLength;});
 
-	console.log(fruitFive);
+	console.log('_.select example:', fruitFive);
 
+	// each
 	_.each(fruits, function(fruit) {
-		console.log(fruit);
+		console.log('_.each example:', fruit);
 	});
+
+	// uniq
+	var nums = [1, 1, 2, 3, 4, 5, 5, 5, 4, 7, 10, 10, 10];
+	var unique = _.uniq(nums);
+
+	console.log('_.uniq example:', unique); // [1, 2, 3, 4, 5, 7, 10]
+
+	// range
+	var fiver = _.range(10, 30, 5);
+	console.log('_.range example:', fiver);
+
+
+	// rest
+	var array = [1, 2, 3, 4, 5, 6, 7, 8];
+
+	var restArray = _.rest(array, 3);
+	console.log('_.rest example:', restArray);
+
+	// without
+	var without = _.without(array, 1, 5, 8);
+	console.log('_.without example:', without); // [2, 3, 4, 6, 7]
+
+	// keys
+	var obj = {firstName: 'Vahid', lastName: 'Mazdeh', age: 23};
+
+	var keys = _.keys(obj);
+	console.log('_.keys example:', keys);
 
 </script>
 
