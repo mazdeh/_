@@ -23,6 +23,7 @@ Now after the closing `<body>` tag, inside a `<script>` tag, we'll be experiment
 
 ## Categories
 Underscore's functionalities fall into 5 general categories:
+
 1. Collections
 2. Arrays
 3. Objects
@@ -138,13 +139,90 @@ console.log('_.keys example:', keys); // ["firstName", "lastName", "age"]
 
 You can get the values in an object in the same manner, but using `_.values(object)` instead.
 
-### 
+### invert
+Maybe not as frequently used, but a very powerful and cool function I think.
+It returns a copy of the object where the keys have become the values, and the values the keys. For it to work, all the values in object should be unique and string serializable.
+```js
+var obj = {firstName: 'Vahid', lastName: 'Mazdeh', age: 23};
+
+var inverted = _.invert(obj);
+console.log('_.invert example:', inverted); // Object {23: "age", Vahid: "firstName", Mazdeh: "lastName"}
+```
+
+### extend
+More useful than the previous.
+`_.extend(destination, source)` It copies all the properties in the `source` object over to the `destination` object, and returns `destination`
+```js
+var destination = {firstName: 'Vahid', lastName: 'Mazdeh', age: 23};
+
+var source = {homeTown: 'Boulder, CO'};
+
+var extended = _.extend(destination, source);
+console.log('_.extend example:', extended); // Object {firstName: "Vahid", lastName: "Mazdeh", age: 23, homeTown: "Boulder, CO"}
+```
+
+### defaults
+Very useful when you need all your objects to have the same properties and default to certain values.
+
+Here's an example:
+```js
+var objOne = {firstName: 'Vahid', lastName: 'Mazdeh', age: 23};
+
+var defaults = {homeTown: 'Boulder, CO', occupation: 'Software Developer'};
+
+_.defaults(objOne, defaults);
+console.log('_.defaults example:', objOne); // Object {firstName: "Vahid", lastName: "Mazdeh", age: 23, homeTown: "Boulder, CO", occupation: "Software Developer"}
+```
+
+# Utilities
+The most important and useful of Underscore's utility functions is `template`. There are so many templating utilities out there, but none is as powerful and as small as Underscores.
+
+`template` is great for when you have a lot of JSON that you need to calculate and render within the HTML.
+
+
+It compiles JavaScript templates into functions that can be evaluated for rendering. 
+
+Useful for rendering complicated bits of HTML from JSON data sources. 
+
+To get a better idea of what we can do with the `template` utility function add the below code to a simple index.html file, inside the `<body>` tag:
+```html
+<h3>
+</h3>
+
+<script type="text/template" id="gooz">
+	<h3>Hello <span style="color: green;"><%= data.firstName %></span>. Welcome to the Underscore.js Tutorial!</h3>
+</script>
+```
+
+Underscore templates inside the html go inside a script tag, like above. We give the script tag an ID, so that we can grab it using jQuery later on, to resolve the template with our data.
+
+Note: Make sure you include jQuery in your index file, or else this example will not work.
+
+Now, inside a script tag after the closing `<body>` tag, we're going to resolve the template we just created, with the `_.template` utility funciton.
+
+```js
+data = {firstName: 'Prof. Anderson'};
+
+var template = _.template($("#gooz").html());
+$("h3").html(template);
+```
+
+Note: We are using jQuery to grab the underscor template within our html. Then we replace the `html()` of that empty `<h3>` tag with the resolved template data.
+
+
+Templates can be used to inject values from a JSON file into the HTML, or to run some JavaScript code within the HTML, using `<% ... %>`. Your JS code inside these delimiters will be excuted and rendered inside the HTML.
 
 
 
-
-
-
+### random
+Works like the random function in Python. Returns a random integer between `min` and `max`.
+```js
+_.random(min, max);
+```
+Example:
+```js
+console.log(_.random(10, 700));
+```
 
 
 

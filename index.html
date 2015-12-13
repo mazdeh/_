@@ -1,16 +1,23 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="underscore.js"></script>
 </head>
 <body>
-	
 	<h1>
 		Underscore Tutorial
 	</h1>
 	<p>
 	To open up Chrome Dev tools to checkout the example results: <strong>cmd + opt + J</strong>
 	</p>
+
+	<h3>
+	</h3>
+
+	<script type="text/template" id="gooz">
+		<h3>Hello <span style="color: green;"><%= data.firstName %></span>. Welcome to the Underscore.js Tutorial!</h3>
+	</script>
 
 </body>
 
@@ -55,7 +62,45 @@
 	var obj = {firstName: 'Vahid', lastName: 'Mazdeh', age: 23};
 
 	var keys = _.keys(obj);
-	console.log('_.keys example:', keys);
+	console.log('_.keys example:', keys); // ["firstName", "lastName", "age"]
+
+
+	// invert
+	var obj = {firstName: 'Vahid', lastName: 'Mazdeh', age: 23};
+
+	var inverted = _.invert(obj);
+	console.log('_.invert example:', inverted); // Object {23: "age", Vahid: "firstName", Mazdeh: "lastName"}
+
+	// extend
+	var destination = {firstName: 'Vahid', lastName: 'Mazdeh', age: 23};
+
+	var source = {homeTown: 'Boulder, CO'};
+
+	var extended = _.extend(destination, source);
+	console.log('_.extend example:', extended); // Object {firstName: "Vahid", lastName: "Mazdeh", age: 23, homeTown: "Boulder, CO"}
+
+	// defaults
+	var objOne = {firstName: 'Vahid', lastName: 'Mazdeh', age: 23};
+
+	var defaults = {homeTown: 'Boulder, CO', occupation: 'Software Developer'};
+
+	_.defaults(objOne, defaults);
+	console.log('_.defaults example:', objOne); // Object {firstName: "Vahid", lastName: "Mazdeh", age: 23, homeTown: "Boulder, CO", occupation: "Software Developer"}
+
+
+	// template
+	data = {firstName: 'Prof. Anderson'};
+
+	var template = _.template($("#gooz").html());
+
+	$("h3").html(template);
+
+
+	// random
+	console.log(_.random(10, 700));
+
+
+
 
 </script>
 
