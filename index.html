@@ -15,8 +15,10 @@
 	<h3>
 	</h3>
 
+	<hr>
+
 	<script type="text/template" id="gooz">
-		<h3>Hello <span style="color: green;"><%= data.firstName %></span>. Welcome to the Underscore.js Tutorial!</h3>
+		Hello <span style="color: green;"><%= data.firstName %></span>. Welcome to the Underscore.js Tutorial!
 	</script>
 
 </body>
@@ -98,6 +100,29 @@
 
 	// random
 	console.log(_.random(10, 700));
+
+	// bind
+	var context = { prefix: "Dr." };
+	var boundFunc = function(name) { 
+		return this.prefix + " " + name;
+	};
+
+	var bindEm = _.bind(boundFunc, context);
+
+	console.log(bindEm('Ken Anderson'));
+
+
+	// once
+	var author = function(name) {
+		$('hr').after($('<footer></footer>').text('This presentation was brought to you by '+ name +'. :) Thank you for a great semester.'));
+	}
+
+	var onlyOnce = _.once(author);
+
+	onlyOnce('Vahid Mazdeh');
+	onlyOnce('Vahid Mazdeh');
+	onlyOnce('Vahid Mazdeh');
+	// only rendered once
 
 
 

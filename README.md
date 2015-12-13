@@ -175,6 +175,7 @@ console.log('_.defaults example:', objOne); // Object {firstName: "Vahid", lastN
 ```
 
 # Utilities
+### template
 The most important and useful of Underscore's utility functions is `template`. There are so many templating utilities out there, but none is as powerful and as small as Underscores.
 
 `template` is great for when you have a lot of JSON that you need to calculate and render within the HTML.
@@ -223,6 +224,60 @@ Example:
 ```js
 console.log(_.random(10, 700));
 ```
+
+
+# Functions
+Functions work on functions. This is a little more complicated, so let's take a look at an example.
+
+### bind
+Create a function bound to a given object (assigning `this`, and arguments, optionally).
+
+```js
+var context = { prefix: "Dr." };
+var boundFunc = function(name) { 
+	return this.prefix + " " + name;
+};
+
+var bindEm = _.bind(boundFunc, context);
+
+console.log(bindEm('Ken Anderson'));
+```
+
+### once
+Creates a version of the function that can only be called one time. Repeated calls to the modified function will have no effect, returning the value from the original call. Useful for initialization functions, instead of having to set a boolean flag and then check it later.
+
+This is so useful if you've ever worked on a fairly more complex project. This funciton could save you a lot of performance when used right.
+
+Here's a function that I only need to call once. All calls to this funciton after the first call should be completely ignored.
+```js
+var author = function(name) {
+	$('hr').after($('<footer></footer>').text('This presentation was brought to you by '+ name +'. :) Thank you for a great semester.'));
+}
+```
+
+Right now, if I call `author()` multiple times, we'd have multiple footer tags in our HTML.
+
+So now we're going to try making this function ignore all calls to it after the first one by doing:
+```js
+var onlyOnce = _.once(author);
+```
+
+Now no matter how many times we call `onlyOnce()`, we'd only have one footer tag on our page.
+```js
+onlyOnce('Vahid Mazdeh');
+onlyOnce('Vahid Mazdeh');
+onlyOnce('Vahid Mazdeh');
+```
+
+Pretty useful for initialization functions!
+
+---
+This concludes our brief discussion of Underscore.js. Underscore has over 60 functions that are all pretty useful and we covered a few here. The source code for the underscore project is available at underscore.org.
+
+
+
+
+
 
 
 
